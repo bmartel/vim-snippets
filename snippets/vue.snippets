@@ -100,7 +100,7 @@ snippet vcl
 	@click=""
 
 snippet vdata
-	data: function () {
+	data() {
 	  return {
 		key: value
 	  };
@@ -108,7 +108,7 @@ snippet vdata
 
 snippet vfilter
 	filters: {
-	  fnName: function (v) {
+	  fnName(v) {
 		return;
 	  }
 	}
@@ -137,39 +137,39 @@ snippet vkeep
 
 snippet vmixin
 	// define a mixin object
-	var myMixin = {
-	  created: function () {
+	const myMixin = {
+	  created() {
 		this.hello()
 	  },
 	  methods: {
-		hello: function () {
+		hello() {
 		  console.log('hello from mixin!')
 		}
 	  }
 	}
 	// define a component that uses this mixin
-	var Component = Vue.extend({
+	const Component = Vue.extend({
 	  mixins: [myMixin]
 	})
-	var component = new Component() // -> "hello from mixin!"
+	const component = new Component() // -> "hello from mixin!"
 
 snippet vmutations
 	// define a mixin object
-	var myMixin = {
-	  created: function () {
+	const myMixin = {
+	  created() {
 		this.hello()
 	  },
 	  methods: {
-		hello: function () {
+		hello() {
 		  console.log('hello from mixin!')
 		}
 	  }
 	}
 	// define a component that uses this mixin
-	var Component = Vue.extend({
+	const Component = Vue.extend({
 	  mixins: [myMixin]
 	})
-	var component = new Component() // -> "hello from mixin!"
+	const component = new Component() // -> "hello from mixin!"
 
 snippet vprops:d
 	propName: {
