@@ -10,36 +10,38 @@ extends html, javascript, css
 
 snippet slot
 	<slot></slot>
+	
+snippet slot:s
+	<slot name="${0}"></slot>
 
 snippet template
 	<template></template>
 
 snippet transition 
 	<transition></transition>
-
+	
 # The following snippets create more complex boilerplate code.
 
 snippet vbase
 	<template>
-		<div>
-
-		</div>
+		${1:<div></div>}
 	</template>
 
 	<script>
-		export default{
-
+		export default {
+			${2}
 		}
 	</script>
-	<style scoped>
-
+	
+	<style ${3:scoped}>
+		${0}
 	</style>
 snippet vimport:c
-	import New from './components/New.vue';
+	import ${1:New from './components/${1}.vue';
 
 	export default{
 		components: {
-			appNew: New 
+			${1} 
 		}
 	}
 
@@ -97,19 +99,19 @@ snippet vanim:js:method
 	}
 
 snippet vcl 
-	@click=""
+	@click="${0}"
 
 snippet vdata
 	data() {
 	  return {
-		key: value
+		${1:key}: ${2:value},${0}
 	  };
 	}
 
 snippet vfilter
 	filters: {
-	  fnName(v) {
-		return;
+	  ${1:fnName}(${2:v}) {
+		return ${0};
 	  }
 	}
 
