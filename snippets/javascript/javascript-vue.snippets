@@ -1,22 +1,21 @@
 snippet vm
+	export const namespaced = true;
 
-export const namespaced = true;
+	export const initialState = () => ({
+		${1}
+	});
 
-export const initialState = () => ({
-	${1}
-});
+	export const state = initialState;
 
-export const state = initialState;
+	export const actions = {
+		${2}
+	};
 
-export const actions = {
-	${2}
-};
+	export const mutations = {
+		${3}
+	};
 
-export const mutations = {
-	${3}
-};
-
-export const getters = {
-	${0}
-};
+	export const getters = {
+		${0}
+	};
 
