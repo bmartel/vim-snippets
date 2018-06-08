@@ -7,54 +7,79 @@ extends html, javascript, css
 # These snippets form a port of Sarah Drasner's vue-sublime-snippets
 
 # some html-like snippets
-
-snippet slot
-	<slot></slot>
 	
-snippet slot:s
-	<slot name="${0}"></slot>
-
-snippet template
-	<template></template>
-
-snippet transition 
-	<transition></transition>
+snippet ns "named slot"
+	<slot name="$1"></slot>
 	
 # The following snippets create more complex boilerplate code.
 
-snippet vbase
+snippet co "component template"
 	<template>
-		${1:<div></div>}
+		$1
 	</template>
 
 	<script>
 		export default {
-			${2}
+			$2
 		}
 	</script>
 	
 	<style ${3:scoped}>
-		${0}
+		$4
 	</style>
+
+snippet cd "component data declaration"
+	data: () => ({
+		$1: $2,
+	}),
+
+snippet cc "component computed declaration"
+	computed: {
+		$1() {
+			$2
+		},
+	},
+  
+snippet cco "component components declaration"
+	components: {
+		$1,
+	},
+
+snippet cm "component method declaration"
+	methods: {
+		$1() {
+			$2
+		},
+	},
+
+snippet cp "component props declaration"
+	props: {
+		$1: {
+			type: ${2:String},
+			default: ${3: ''},
+		},
+	}
+
+snippet prop "component prop declaration"
+	$1: {
+		type: ${2:String},
+		default: ${3: ''},
+	},
+
+snippet imc
+	import ${1:New} from '@/components/$1';
+
 snippet imc:e
-	import ${1:New} from './components/${1}';
+	import ${1:New} from '@/components/$1';
 
 	export default{
 		components: {
-			${1} 
-		}
-	}
-
-snippet vactionsis now
-
-	actions: {
-		updateValue({commit}, payload) {
-			commit(updateValue, payload);
+			$1 
 		}
 	}
 
 # Add in js animation hooks
-snippet vanim:js:el 
+snippet ani:e 
 	<transition 
 	  @before-enter="beforeEnter"
 	  @enter="enter"
@@ -65,10 +90,10 @@ snippet vanim:js:el
 	  @after-leave="afterLeave"
 	  @leave-cancelled="leaveCancelled"
 	  :css="false">
-	 
+	 	$1
 	 </transition>
 	 
-snippet vanim:js:method
+snippet ani:m
 	methods: {
 	  beforeEnter(el) {
 		console.log('beforeEnter');
@@ -94,92 +119,15 @@ snippet vanim:js:method
 		console.log('afterLeave');
 	  }, 
 	  leaveCancelled(el, done) {
-		 console.log('leaveCancelled');
+		console.log('leaveCancelled');
 	  }
 	}
 
 snippet vcl 
-	@click="${0}"
-
-snippet vdata
-	data() {
-	  return {
-		${1:key}: ${2:value},${0}
-	  };
-	}
-
-snippet vfilter
-	filters: {
-	  ${1:fnName}(${2:v}) {
-		return ${0};
-	  }
-	}
+	@click="$1"
 
 snippet vfor
-	<div v-for="item in items" :key="item.id">
-	  {{ item }}
-	</div
+	<$1 v-for="${2:item} in $2s" :key="$2.id">
+	  {{ $2 }}
+	</$1>
 
-snippet vgetters
-	getters: {
-		value: state => {
-			return state.value;
-		}
-	}
-
-snippet imc
-	import ${1:New} from '@/components/${1}';
-
-snippet vkeep
-	<keep-alive>
-	  <component :is="">
-		<p>default</p>
-	  </component>
-	</keep-alive>
-
-snippet vmixin
-	// define a mixin object
-	const myMixin = {
-	  created() {
-		this.hello()
-	  },
-	  methods: {
-		hello() {
-		  console.log('hello from mixin!')
-		}
-	  }
-	}
-	// define a component that uses this mixin
-	const Component = Vue.extend({
-	  mixins: [myMixin]
-	})
-	const component = new Component() // -> "hello from mixin!"
-
-snippet vmutations
-	// define a mixin object
-	const myMixin = {
-	  created() {
-		this.hello()
-	  },
-	  methods: {
-		hello() {
-		  console.log('hello from mixin!')
-		}
-	  }
-	}
-	// define a component that uses this mixin
-	const Component = Vue.extend({
-	  mixins: [myMixin]
-	})
-	const component = new Component() // -> "hello from mixin!"
-
-snippet vprops:d
-	propName: {
-	  type: Number,
-	  default: 100
-	},
-
-snippet vprops 
-	propName: {
-		type: Number
-	},
