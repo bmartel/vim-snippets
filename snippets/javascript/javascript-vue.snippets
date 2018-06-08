@@ -2,20 +2,38 @@ snippet vm
 	export const namespaced = true;
 
 	export const initialState = () => ({
-		${1}
+		$1
 	});
 
+	const types = {
+		$2: '$2',
+	};
+	
 	export const state = initialState;
 
 	export const actions = {
-		${2}
+		$3
 	};
 
 	export const mutations = {
-		${3}
+		$4
 	};
 
 	export const getters = {
-		${0}
+		$5
 	};
 
+snippet ty "vuex mutation types declaration"
+	const types = {
+		$1: '$1',
+	};
+
+snippet ac "add vuex action"
+	$1({ commit }, ${2:payload}) {
+		commit(types.$3, $2);
+	}
+
+snippet mu "add vuex mutation"
+	[types.$1](state, ${2:payload}) {
+		state.$3 = $2;
+	}
