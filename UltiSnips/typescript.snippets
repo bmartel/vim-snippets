@@ -1,3 +1,130 @@
 priority -50
 
 extends javascript
+
+priority -49
+
+snippet rrcc "React Redux Class Component" b
+import React, { ComponentClass, ReactNode } from 'react';
+import { Dispatch } from 'redux';
+import { connect, Dispatch } from 'react-redux';
+import styles from './${2:$1}.css';
+// TODO: remove any and replace with import of RootState
+// import RootState from '';
+
+interface Props {
+  children?: ReactNode;
+  className: string;
+  dispatch: Dispatch;
+}
+
+interface State {
+}
+
+class ${1:`!v expand('%:t:r')`} extends ComponentClass<State, Props> {
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<div className={styles.base}>
+				$3
+			</div>
+		);
+	}
+}
+
+function mapStateToProps(state: any) {
+	return {};
+}
+
+
+function mapDispatchToProps(dispatch: Dispatch) {
+	return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)($1);
+endsnippet
+
+snippet rcc "React Class Component" b
+import React, { ComponentClass, ReactNode } from 'react';
+import styles from './${2:$1}.css';
+
+interface Props {
+  children?: ReactNode;
+  className: string;
+}
+
+interface State {
+}
+
+class ${1:`!v expand('%:t:r')`} extends ComponentClass<State, Props> {
+	constructor(props) {
+		super(props);
+	}
+
+	render() {
+		return (
+			<div className={styles.base}>
+				$3
+			</div>
+		);
+	}
+}
+export default $1;
+endsnippet
+
+snippet rrfc "React Redux Function Component" b
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './${2:$1}.css';
+// TODO: remove any and replace with import of RootState
+// import RootState from '';
+
+interface Props {
+  children?: ReactNode,
+  className: string,
+  dispatch: ,
+}
+
+function ${1:`!v expand('%:t:r')`}({ $3 }: Props) {
+	return (
+		<${5:div} className={styles.base}>
+			$0
+		</$5>
+	);
+}
+
+function mapStateToProps(state: any) {
+	return {};
+}
+
+
+function mapDispatchToProps(dispatch: Dispatch) {
+	return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)($1);
+endsnippet
+
+snippet rfc "React Functional Component" b
+import React from 'react';
+import styles from './${2:$1}.css';
+
+interface Props {
+  children?: ReactNode,
+  className: string,
+  dispatch: ,
+}
+
+function ${1:`!v expand('%:t:r')`}({ $3 }: Props) {
+	return (
+		<${5:div} className={styles.base}>
+			$0
+		</$5>
+	);
+}
+
+export default $1;
+endsnippet
