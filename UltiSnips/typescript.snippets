@@ -5,7 +5,7 @@ extends javascript
 priority -49
 
 snippet rrcc "React Redux Class Component" b
-import React, { ComponentClass, ReactNode } from 'react';
+import React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import styles from './${2:$1}.css';
@@ -13,7 +13,7 @@ import styles from './${2:$1}.css';
 // import RootState from '';
 
 interface Props {
-  children?: ReactNode;
+  children?: React.ReactNode;
   className: string;
   dispatch: Dispatch;
 }
@@ -21,7 +21,7 @@ interface Props {
 interface State {
 }
 
-class ${1:`!v expand('%:t:r')`} extends ComponentClass<State, Props> {
+class ${1:`!v expand('%:t:r')`} extends React.ComponentClass<State, Props> {
 	constructor(props) {
 		super(props);
 	}
@@ -48,18 +48,18 @@ export default connect(mapStateToProps, mapDispatchToProps)($1);
 endsnippet
 
 snippet rcc "React Class Component" b
-import React, { ComponentClass, ReactNode } from 'react';
+import React from 'react';
 import styles from './${2:$1}.css';
 
 interface Props {
-  children?: ReactNode;
+  children?: React.ReactNode;
   className: string;
 }
 
 interface State {
 }
 
-class ${1:`!v expand('%:t:r')`} extends ComponentClass<State, Props> {
+class ${1:`!v expand('%:t:r')`} extends React.ComponentClass<State, Props> {
 	constructor(props) {
 		super(props);
 	}
@@ -83,7 +83,7 @@ import styles from './${2:$1}.css';
 // import RootState from '';
 
 interface Props {
-  children?: ReactNode;
+  children?: React.ReactNode;
   className: string;
   dispatch: Dispatch;
 }
@@ -113,7 +113,7 @@ import React from 'react';
 import styles from './${2:$1}.css';
 
 interface Props {
-  children?: ReactNode;
+  children?: React.ReactNode;
   className: string;
 }
 
