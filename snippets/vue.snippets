@@ -11,6 +11,10 @@ extends html, javascript, css
 snippet ns "named slot"
 	<slot name="$1"></slot>
 	
+snippet vs "v-slot"
+	<template v-slot:${1:default}>
+	</template>
+	
 # The following snippets create more complex boilerplate code.
 
 snippet co "component template"
@@ -29,9 +33,11 @@ snippet co "component template"
 	</style>
 
 snippet cd "component data declaration"
-	data: () => ({
-		$1: $2,
-	}),
+	data() {
+		return {
+			$1: $2,
+		}
+	},
 
 snippet cc "component computed declaration"
 	computed: {
@@ -65,6 +71,18 @@ snippet prop "component prop declaration"
 		type: ${2:String},
 		default: ${3: ''},
 	},
+
+snippet im
+	import ${1:New} from '$1';
+
+snippet im:e
+	import ${1:New} from '$2$1';
+
+	export default{
+		components: {
+			$1 
+		}
+	}
 
 snippet imc
 	import ${1:New} from '@/components/$1';
