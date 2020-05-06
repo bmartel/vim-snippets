@@ -1,8 +1,8 @@
 # This snippet file enables vue files to use tabs for html, js and css. It also
-# includes some vue-specific html-like snippets, as well as some general 
+# includes some vue-specific html-like snippets, as well as some general
 # boilerplate code for vue.
 
-extends html, javascript, css 
+extends html, javascript, css
 
 # These snippets form a port of Sarah Drasner's vue-sublime-snippets
 
@@ -78,7 +78,7 @@ snippet im
 snippet im:e
 	import ${1:New} from '$2$1';
 
-	export default{
+	export default {
 		components: {
 			$1 
 		}
@@ -103,6 +103,7 @@ snippet ani:e
 	  @enter="enter"
 	  @after-enter="afterEnter"
 	  @enter-cancelled="enterCancelled"
+
 	  @before-Leave="beforeLeave"
 	  @leave="leave"
 	  @after-leave="afterLeave"
